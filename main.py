@@ -47,10 +47,7 @@ while len(guessed_states) < 32:
             guessed_states.append(capitalized_answer)
 
 """States to learn. Write down the states that were not guessed"""
-states_to_learn: list[str] = []
-for state in all_states:
-    if state not in guessed_states:
-        states_to_learn.append(state)
+states_to_learn = [state for state in all_states if state not in guessed_states]
 
 data_dict = {"states": states_to_learn}
 pandas.DataFrame(data_dict).to_csv("states_to_learn.csv")
